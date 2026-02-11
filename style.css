@@ -1,0 +1,271 @@
+:root {
+    --bg-dark: #0a0a0c;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-youtube: #ff0000;
+    --accent-facebook: #1877f2;
+    --accent-instagram: #e4405f;
+    --accent-tiktok: #000000;
+    --gradient-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background Blobs */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #4a00e0, #8e2de2);
+    filter: blur(80px);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: move 20s infinite alternate;
+}
+
+.blob-1 {
+    top: -100px;
+    left: -100px;
+    background: linear-gradient(135deg, #ff0080, #ff8c00);
+}
+
+.blob-2 {
+    bottom: -150px;
+    right: -100px;
+    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    animation-delay: -10s;
+}
+
+@keyframes move {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 100px) scale(1.2); }
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    margin-bottom: 40px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.logo-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    padding: 5px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 25px;
+}
+
+.brand-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(to right, #fff, #b0b0b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Links Section */
+.links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-primary);
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: 0.5s;
+}
+
+.link-card:hover::before {
+    left: 100%;
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.link-card:hover .icon-box {
+    transform: scale(1.1);
+}
+
+.content-box {
+    flex: 1;
+    text-align: left;
+}
+
+.platform-name {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.username {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.arrow {
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.link-card:hover .arrow {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* Platform Specific Colors */
+.youtube .icon-box { background: var(--accent-youtube); color: white; }
+.youtube:hover { border-color: var(--accent-youtube); }
+
+.facebook .icon-box { background: var(--accent-facebook); color: white; }
+.facebook:hover { border-color: var(--accent-facebook); }
+
+.instagram .icon-box { background: var(--gradient-instagram); color: white; }
+.instagram:hover { border-color: var(--accent-instagram); }
+
+.tiktok .icon-box { background: var(--accent-tiktok); color: white; border: 1px solid rgba(255,255,255,0.2); }
+.tiktok:hover { border-color: #fff; }
+
+/* Footer */
+.footer {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .brand-name {
+        font-size: 1.75rem;
+    }
+}
